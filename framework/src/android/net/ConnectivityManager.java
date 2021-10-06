@@ -5967,4 +5967,19 @@ public class ConnectivityManager {
             throw e.rethrowFromSystemServer();
         }
     }
+
+
+    /**
+     * Notify ConnectivityService of a runtime permission change for the given package and user ID.
+     *
+     * @hide
+     */
+    @SystemApi
+    public void onPackagePermissionChanged(int uid) {
+        try {
+            mService.onPackagePermissionChanged(uid);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
 }

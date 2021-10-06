@@ -11401,4 +11401,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
         mBpfNetMaps.replaceUidChain(chain, uids);
     }
+
+    @Override
+    public void onPackagePermissionChanged(int uid) {
+        mPermissionMonitor.onInternetPermissionChanged(uid);
+    }
 }
