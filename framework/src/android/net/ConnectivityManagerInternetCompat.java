@@ -137,6 +137,9 @@ public class ConnectivityManagerInternetCompat extends ConnectivityManager {
     public void registerNetworkCallback(@NonNull NetworkRequest request, @NonNull NetworkCallback networkCallback, @NonNull Handler handler) {}
 
     @Override
+    public void unregisterNetworkCallback(@NonNull NetworkCallback networkCallback) {}
+
+    @Override
     public void registerNetworkCallback(@NonNull NetworkRequest request, @NonNull PendingIntent operation) {}
 
     @Override
