@@ -34,7 +34,6 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructTimeval;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Pair;
 
 import com.android.internal.util.IndentingPrintWriter;
@@ -595,11 +594,6 @@ public class NetworkDiagnostics {
 
         @Override
         public void run() {
-            if (ConnChecksSetting.get() == ConnChecksSetting.VAL_DISABLED) {
-                Log.d(TAG, "skipping DnsUdpCheck: connectivity checks are disabled");
-                return;
-            }
-
             if (ensureMeasurementNecessary()) return;
 
             try {
@@ -650,7 +644,7 @@ public class NetworkDiagnostics {
 
         private String qnameEnding;
 
-        protected byte[] getDnsQueryPacket(String sixRandomDigits) { // todo
+        protected byte[] getDnsQueryPacket(String sixRandomDigits) {
             byte[] rnd = sixRandomDigits.getBytes(StandardCharsets.US_ASCII);
 
             byte[] start = {
@@ -811,11 +805,6 @@ public class NetworkDiagnostics {
 
         @Override
         public void run() {
-            if (ConnChecksSetting.get() == ConnChecksSetting.VAL_DISABLED) {
-                Log.d(TAG, "skipping DnsTlsCheck: connectivity checks are disabled");
-                return;
-            }
-
             if (ensureMeasurementNecessary()) return;
 
             // No need to restore the tag, since this thread is only used for this measurement.
